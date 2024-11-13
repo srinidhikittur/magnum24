@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/photos/logo_icon.jpg">
+    <title>Magnum</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: black;
+}
+.video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            position: fixed;
+            gap:1340px;
+            background-color: transparent;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+            animation: neon 1.5s ease-in-out infinite;
+        }
+
+        @keyframes neon {
+            0%, 100% {
+                text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+            }
+            50% {
+                text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links li {
+            margin-left: 1rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ff00;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .main-content {
+            color: white;
+            position: absolute;
+            top:15%;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+        }
+
+        .main-content p{
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .magnum h1{
+            font-size: 12rem;
+        }
+        .magnum p{
+            font-size: 1.3rem;
+            color: white;
+        }
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .main-content p{
+                font-size: 0.8rem;
+            }
+            .event-co{
+                font-size: 2rem;
+            }
+            .hamburger {
+                display: block;
+            }
+            .magnum h1{
+                font-size: 4rem;
+            }
+            .magnum p{
+                font-size: 0.8rem;
+            }
+            .nav-active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                right: 0;
+                top: 82px;
+                border-left: 2px solid #f2f5f2;
+                background-color: black;
+                backdrop-filter: blur(100px);
+                width: 80%;
+                align-items: center;
+                padding: 1rem;
+                z-index: 999;
+                border-bottom-left-radius: 30px;
+                border-bottom: 2px solid white;
+            }
+
+            .nav-active li {
+                margin: 1rem 0;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+.nav{
+    position: relative;
+    z-index: -1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    padding: 20px;
+}
+.nav h1{
+    color:#00ff00;
+    text-shadow: 3px 10px 15px rgb(147, 215, 132);
+}
+.atag ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    text-decoration: none;
+    padding: 15px;
+}
+.atag li a{
+    text-decoration: none;
+    padding: 25px;
+    color: white;
+}
+.nav a {
+    position: relative;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #fff;
+    margin-left: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.nav a:hover {
+    color: #08fb10;
+}
+.nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background:linear-gradient(rgb(5, 252, 5),#b0f16e);
+    left: 0;
+    bottom: 15px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav a:hover::after {
+    transform: scaleX(1);
+}
+.mag{
+    color: rgb(5, 255, 42);
+    width: 100%;
+}
+.mag h1{
+    font-size: 120px;
+    text-shadow: 3px 10px 15px rgb(147, 215, 132);
+    position: absolute;
+    top:60%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.mag p{
+    position:absolute;
+    top:70%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: white;
+    text-align: center;
+    text-shadow: 3px 10px 5px rgb(5,255,42);
+}
+.kls{
+    position:absolute;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+.about{
+    position: relative;
+    left: 15%;
+    width: 70%;
+    height: auto;
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+    color: #08fb10;
+}
+.event-container{
+    display: grid;
+    place-items: center;
+}
+.event{
+    width: 320px;
+    height: 320px;
+}
+.event img{
+    width: 320px;
+    height:320px;
+    object-fit: cover;
+}
+.container{
+    display: flex;
+    gap:10px;
+    width: 1260px;
+    height: auto;
+    border: 1px solid rgb(22, 229, 22);
+    padding: 40px;
+    margin: 20px;
+}
+.event-des{
+    color: rgb(77, 238, 77);
+}
+
+.event-des h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color:white;
+}
+
+.event-des p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.event-des button {
+    background-color: #08fb10;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.event-des button a {
+    color: black;
+    text-decoration: none;
+}
+.menu-button{
+    display: none;
+}
+.about h1{
+    color: white;
+}
+@media(max-width:400px){
+    #sidebar{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 767px) {
+    nav{
+        padding: 1rem;
+        position: fixed;
+        gap: 160px;
+        background-color: transparent;
+        backdrop-filter: blur(10px);
+        z-index: 999;
+        border-bottom: 2px solid white;
+        width: 100%;
+}
+  .nav h1 {
+    margin-bottom: 15px;
+  }
+
+  .atag ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .atag li {
+    margin: 5px 0;
+  }
+
+  .atag li a {
+    padding: 10px;
+  }
+
+  .mag h1 {
+    font-size: 3rem;
+    top: 50%;
+  }
+
+  .mag p {
+    font-size: 1rem;
+    top: 65%;
+  }
+
+  .kls {
+    position: static;
+    padding: 20px 0;
+  }
+
+  .about {
+    left: 0;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .about h2{
+    font-size: 0.8rem;
+  }
+  .about h1 {
+    font-size: 1.5rem;
+  }
+
+  .about p {
+    font-size: 1rem;
+  }
+
+  .container {
+    flex-direction: column;
+    width: 90%;
+    padding: 20px;
+  }
+
+  .event {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .event img {
+    width: 100%;
+    height: auto;
+  }
+
+  .event-des {
+    text-align: center;
+  }
+
+  .event-des h1 {
+    font-size: 1.2rem;
+  }
+
+  .event-des p {
+    font-size: 0.8rem;
+  }
+  .head-container{
+    flex-direction: column;
+    align-items: center;
+  }
+  .head-details{
+    position: relative;
+    top:-5%;
+  }
+}
+.register{
+    display: grid;
+    place-items: center;
+    padding: 5px;
+}
+.head-container{
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+}
+.head-details{
+    width: 300px;
+    font-size: 0.5rem;
+}
+.head-details h1{
+    font-size: 1.5rem;
+}
+.head-details p{
+    font-size: 1rem;
+}
+.photo{
+    box-shadow: inset 0px 0px 85px rgba(0, 0, 0, 0.4);
+}
+.photo img{
+    width: 300px;
+    height: 350px;
+    box-shadow: inset 0 0 120px #000, inset 0 0 80px #000, inset 0 0 40px #000;
+    border-radius: 15px;
+}
+.student-container{
+    display: flex;
+    justify-content:space-evenly ;
+}
+.student-photo img{
+    width: 300px;
+    height: 350px;
+    box-shadow: inset 0 0 120px #000, inset 0 0 80px #000, inset 0 0 40px #000;
+    border-radius: 15px;
+
+}
+#sidebar{
+    position: fixed;
+    top:0;
+    right:0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color:#444944;
+    backdrop-filter: blur(10px);
+    box-shadow: 10px 10px 10px #00ff00;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;    
+    display: none;
+}
+#atag{
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap:20px;
+}
+#sidebar li{
+    width: 100%;
+}
+#sidebar a{
+    width: 100%;
+}
+.atag img{
+    width: 30px;
+    height: 30px;
+}
+#sidebar img{
+    width: 30px;
+    height: 30px;
+}
+
+.scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-animate:nth-child(1) { transition-delay: 0.1s; }
+        .scroll-animate:nth-child(2) { transition-delay: 0.2s; }
+        .scroll-animate:nth-child(3) { transition-delay: 0.3s; }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-in li {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+        .stagger-in.visible li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .download{
+            background-color: #00ff00;
+            padding:6px;
+            border-radius: 4px;
+        }
+        .download img{
+            width:25px;
+            height: 25px;
+        }
+        .download a:hover{
+            color: #000;
+        }
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <video class="video-background" autoplay muted loop playsinline>
+        <source src="/photos/mg_bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="content" id="home">
+        <nav>
+            <div class="logo" >MAGNUM</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#organizers">Organizers</a></li>
+                <li class="download"><a href="/brochure.pdf" download><img src="/photos/download_icon.svg" alt="">Brochure</a></li>
+            </ul>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+
+        <main>
+            
+            <div class="main-content scroll-animate">
+                <p><small>Karnatak Law Society's</small></p>
+                <p><strong>Gogte College of Commerce</strong></p>
+                <p><strong>Bachelor of Computer Applications</strong></p>
+                <p>Presents</p>
+            </div>
+            <div class="magnum scroll-animate">
+                <h1>MAGNUM</h1>
+                <p><em>Where Brilliance meets Innovation</em></p>
+            </div>
+        </main>
+    </div>
+
+    <div class="about-container">
+    <div class="about scroll-animate" id="about">
+        <h1>About Magnum</h1>
+        <p style="text-align: center;"> Magnum is an annual event that brings together talent from various domains to
+            showcase skills, foster collaboration, and create memorable experiences in the world of technology, creativity,
+            and innovation.</p>
+    </div>
+    <br>
+    <br>
+    <div class="about scroll-animate" id="inauguration">
+        <h1>Inauguration</h1>
+        <p style="text-align: center;"> The inauguration ceremony marks the official start of Magnum, featuring guest speakers,
+        performances, and an introduction to the events and opportunities that await participants.</p>
+        <h2 style="color:white">Mark your dates on 20th and 21st November 2024</h2>
+    </div>
+</div>
+<br>
+<br>
+<br>
+    <h1 class="scroll-animate" style="text-align: center;color: #f0f6f0;font-size:4rem;">Events</h1>
+    <div class="event-container" id="events">
+        <div class="container scroll-animate">
+            <div class="event" >
+                <img src="photos/coding.jpeg" alt="coding">
+            </div>
+            <div class="event-des">
+                <h1>NeoCode Nexus</h1>
+                <p>"Master the Code, Shape the Matrix"</p>
+                <p>NeoCode Nexus—the ultimate fusion of code and reality in a Matrix-inspired realm! This electrifying, high-stakes coding event will push your skills, 
+                    creativity, and problem-solving to the edge with intense hackathons, mind-bending coding challenges, and immersive, live problem scenarios. 
+                    Step into a cyberpunk world where algorithms reign supreme and every line of code is a path to mastering the digital future. Are you ready to unlock 
+                    the Matrix and conquer the Nexus? The future is yours to code!  </p>
+                <button><a href="html/coding.html">More Info</a></button>    
+            </div>
+        </div>
+
+        <div class="container scroll-animate">
+            <div class="event">
+                <img src="photos/cyber.jpeg" alt="cyber secruity">
+            </div>
+            <div class="event-des">
+                <h1>Blackout Protocal</h1>
+                <p>"When the light goes out,The hunt begins"</p>
+                <p>Blackout Protocol is a thrilling, beginner-friendly entry into the world of cybersecurity, inspired by the
+                     Matrix. Step into the shadows of the digital landscape to uncover secrets, face challenges, and explore 
+                     the art of cyber defense and ethical hacking. In this guided event, participants will engage in hands-on 
+                     challenges designed to build foundational cybersecurity skills, from decoding encrypted messages to 
+                     navigating simulated breaches. With hints and mentors available at every step, Blackout Protocol
+                      provides a safe, collaborative space for anyone eager to dive into cybersecurity. Join us and unlock
+                       the secrets of the digital world—where only the sharpest minds will emerge victorious!</p>
+                <button><a href="html/cyber.html">More Info</a></button>    
+            </div>
+        </div>
+
+        <div class="container scroll-animate">
+            <div class="event">
+                <img src="photos/design.jpeg" alt="designing">
+            </div>
+            <div class="event-des">
+                <h1>PIXEL PARADOX</h1>
+                <p>Master the Code, Shape the Matrixshape the matrix, Redefine reality.</p>
+                <p>Step into the world where technology meets design. Participate in an engaging design challenges, and 
+                    showcase your creativity through art and innovation. Explore interactive zones that celebrate the power
+                     of design in tech, learn new skills, and collaborate with fellow creatives.
+                </p>
+                <button><a href="html/design.html">More Info</a></button>    
+            </div>
+        </div>
+
+        
+        <div class="container scroll-animate">
+            <div class="event">
+                <img src="photos/ramp.jpeg" alt="group event">
+            </div>
+            <div class="event-des">
+                <h1>Cine Gala</h1>
+                <p>"REEL life , Real Fashion</p>
+                <p>"Cine Gaala" is an immersive icebreaker experience combining glamour, creativity and entertainment, 
+                    inspired by Bollywood  iconic films.</p>
+                <button><a href="html/group.html">More Info</a></button>    
+            </div>
+        </div>
+        
+        <div class="container scroll-animate">
+            <div class="event">
+                <img src="data.jpeg" alt="data">
+            </div>
+            <div class="event-des">
+                <h1>Analytic Odyssey</h1>
+                <p>"Insights from data, journey to success!</p>
+                <p>Analytic Odyssey" means a journey or expedition that is centered around data analysis. The term "Analytic"
+                     refers to the process of examining and interpreting data, while "Odyssey" signifies a long and challenging
+                      journey. Using this name suggests that you are embarking on an exciting and exploratory journey to 
+                      uncover new insights and discoveries through data.</p>
+                <button><a href="/html/data.html">More Info</a></button>    
+            </div>
+        </div>
+
+        <div class="container scroll-animate">
+            <div class="event">
+                <img src="/photos/market.jpeg" alt="marketing">
+            </div>
+            <div class="event-des">
+                <h1>THE METANET</h1>
+                <p>"Recode your marketing DNA."</p>
+                <p>Are you ready to break free from classic marketing and discover new dimensions of growth? Welcome to The
+                     MetaNet, an elite event where you'll step into a Matrix-inspired world of boundless horizons for your 
+                     brand. This event invites you to rethink the norms and "choose the red pill" to awaken your business
+                      potential in a competitive landscape. Discover the  groundbreaking insights that can shift your 
+                      perspective and take your business to new Uncharted Territory, Get Agent Smith’s Strategy Labs for 
+                      hands-on experience with cutting-edge tools and techniques.
+                    <br>
+                    Unlock your marketing potential at The Metanet and transform the way you grow.
+                    </p>
+                <button><a href="/html/market.html">More Info</a></button>    
+            </div>
+        </div>
+        
+        <div class="container scroll-animate">
+            <div class="event">
+                <img src="/photos/game.jpeg" alt="Gaming">
+            </div>
+            <div class="event-des">
+                <h1>Matrix Warzone</h1>
+                <p>“Gear Up, Dive In, Dominate the Zone"</p>
+                <p>Matrix Warzone, where you can explore the art of game and performance in this thrilling battlefield 
+                    experience! Learn how to enhance your gameplay, make smarter decisions, and execute advanced tactics.
+                     Discover how effectively communicate and coordinate with your team for maximum impact in battle. Share 
+                     strategies and techniques with like-minded individuals who are just as passionate about the game!</p>
+                <button><a href="html/game.html">More Info</a></button>    
+            </div>
+        </div>
+
+        
+
+       
+        <div class="container scroll-animate">
+            <div class="event">
+                <img src="photos/quiz.jpeg" alt="quiz">
+            </div>
+            <div class="event-des">
+                <h1>Matrix Mastery</h1>
+                <p>"Free Your Mind, Unlock the Truth"</p>
+                <p>Enter the Matrix and test your knowledge in this thrilling quiz event! Navigate the complex web of 
+                    reality and illusion, and prove yourself as 'The One' among fellow rebels. Join us for an immersive
+                     quiz experience that will push your knowledge to the limit. Inspired by the iconic Matrix trilogy, 
+                     this event challenges your understanding of the franchise’s intricate storyline, unforgettable
+                      characters, and mind-bending philosophical themes. Are you ready to break free from the ordinary 
+                      and unlock the truth?</p>
+                <button><a href="/html/quiz.html">More Info</a></button>    
+            </div>
+        </div>
+        
+        <div class="container scroll-animate">
+            <div class="event">
+                <img src="/photos/content.jpeg" alt="content">
+            </div>
+            <div class="event-des">
+                <h1>The Creatrix</h1>
+                <p>"Dive into the digital unknown: content beyond reality"</p>
+                <p>Step into the world of endless possibilities and bring out your most
+                     creative self! If you're someone who doesn’t just want to escape,
+                      but wants to dive deep into the Matrix of Content Creation, this
+                       is the event made for you. Whether you're fascinated by the art 
+                       of video-making, have a passion for capturing compelling shots, 
+                       can blow minds with epic edits, or have the knack for turning 
+                       ordinary into extraordinary through humor and creativity—this is
+                        your stage. Perhaps you're a storyteller who can move an
+                         audience with powerful scripts, or you're excited about 
+                         building your own online brand and connecting with people 
+                         worldwide—The Creatrix is your perfect chance to shine.</p>
+                <button><a href="/html/content.html">More Info</a></button>    
+            </div>
+        </div>
+
+
+        <div class="container scroll-animate">
+            <div class="event">
+                <img src="photos/comm.jpeg" alt="Gaming">
+            </div>
+            <div class="event-des">
+                <h1>ConnectX</h1>
+                <p>"Redefining the Power of Communication"</p>
+                <p>Welcome to ConnectX, a communication journey like no other at Magnum! 
+                    Here, you’ll be pushed to hone your verbal and non-verbal skills, unlock your creative potential, and break through boundaries. 
+                    Get ready to redefine the way you communicate and connect!</p>
+                <button><a href="/html/comm.html">More Info</a></button>    
+            </div>
+        </div>
+
+       
+       
+
+
+    </div>
+
+    <div class="register">
+    <a href="https://forms.gle/MR3hNFBdsp7PkLr97" style="text-align: center;text-decoration: none;
+    font-size: 0.8rem;
+    background-color:#00ff00;color:rgb(7, 7, 7);padding:15px;">Register Here!</a>
+    </div>
+    <br>
+    <br><br>
+    <h1  class="event-co"  style="color: #fbfcfb;text-align: center;" id="organizers">Event Co-Ordinators</h1>
+    <br>
+    <div class="head-container">
+        <div class="head scroll-animate">
+            <div class="photo">
+                <img src="photos/venugopal.jpg" alt="Principle">
+            </div>
+            <div class="head-details">
+                <h1>Dr. Venugopal Jalihal</h1>
+                <p>Principle of College</p>      
+            </div>
+        </div>
+
+        <div class="head scroll-animate">
+            <div class="photo">
+                <img src="/photos/asmita.jpg" alt="Co-Ordinator">
+            </div>
+            <div class="head-details">
+                <h1>Dr. Asmimta Deshpande</h1>
+                <p>Head of BCA Department</p>         
+            </div>
+        </div>
+
+        <div class="head scroll-animate">
+            <div class="photo">
+                <img src="/photos/vaishali.jpg" alt="event head">
+            </div>
+            <div class="head-details">
+                <h1>Prof. Vaishali Shanbagh</h1>
+                <p>Event Co-Ordinator</p>
+                <p>Phone No: 7846058520</p>           
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+
+
+    <h1 class="event-co" style="color: #f4f9f4;text-align: center;">Student Co-Ordinators</h1>
+    <br>
+    <br>
+    <div class="head-container">
+        <div class="head scroll-animate">
+            <div class="photo">
+                <img src="/photos/ranjeet.jpg">
+            </div>
+            <div class="head-details" style="display: flex;justify-content: space-between;align-items: flex-end;">
+                <h1>Ranjeet Patil</h1>
+                <p>General Secretary</p>      
+            </div>
+            <p>Phone No : 8867340715</p>
+        </div>
+
+        <div class="head scroll-animate">
+            <div class="photo">
+                <img src="/photos/praisy.jpeg">
+            </div>
+            <div class="head-details" style="display: flex;justify-content: space-between;align-items: flex-end;">
+                <h1>Praisy Pillay</h1>
+                <p>Ladies Secretary</p>         
+            </div>
+            <p>Phone No : 8496953722</p>
+        </div>
+
+    </div>
+
+    <h1 style="color: #f8f9f8;text-align: center;">Developer</h1>
+    <br>
+    <div class="head-container">
+
+        <div class="head scroll-animate" >
+            <div class="photo">
+                <img src="/photos/piyush.jpeg" alt="Piyush Gurav">
+            </div>
+            <div class="head-details">
+                <h1>Piyush Gurav</h1>
+                <p>Phone No: 7019450720</p>           
+            </div>
+        </div>
+
+       <!-- <div class="head scroll-animate">
+            <div class="photo">
+                <img src="gourav.jpeg" alt="Gourav Sapaliga">
+            </div>
+            <div class="head-details">
+                <h1>Gourav Sapliga</h1>
+                <p>Phone No: 9686421932</p>      
+            </div>
+        </div>
+
+        <div class="head scroll-animate">
+            <div class="photo">
+                <img src="prajakta.jpeg" alt="Prajakta Choudary">
+            </div>
+            <div class="head-details">
+                <h1>Prajkata Choudary</h1>
+                <p>Phone No: 9632587410</p>         
+            </div>
+        </div> -->
+
+        
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainContent = document.querySelector('.main-content');
+            mainContent.classList.add('visible');
+
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('nav-active');
+            });
+
+            function checkScroll() {
+                const elements = document.querySelectorAll('.scroll-animate');
+                elements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                    if (rect.top <= windowHeight * 0.75) {
+                        el.classList.add('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', checkScroll);
+            checkScroll();
+        });
+
+
+        
+    </script>
+</body>
+</html>

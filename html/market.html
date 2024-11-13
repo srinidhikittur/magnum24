@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE METANET</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #060606;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #00ff00;
+        }
+        .container {
+            background-image: url(/photos/market.jpeg);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 1rem;
+        }
+        .event-name h1 {
+            font-size: 5rem;
+            color: white;
+            text-shadow: 10px 10px 7px #060606;
+            text-align: center;
+        }
+        .event-name p {
+            font-size: 2rem;
+            color: white;
+            text-shadow: 10px 10px 4px #060606;
+            text-align: center;
+        }
+        .event-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .about-event {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .about-event p {
+            font-size: 1.5rem;
+        }
+        .rules ul, .requirements ul {
+            border: 2px solid #00ff00;
+            padding: 28px;
+            list-style-position: inside;
+            margin-bottom: 2rem;
+        }
+        .rules li, .requirements li {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .head-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            color: white;
+        }
+        .head-details {
+            width: 260px;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .photo img {
+            width: 100%;
+            max-width: 260px;
+            border-radius: 10px;
+        }
+        .head {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .home {
+            background-color: #00ff00;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            position: fixed;
+            top: 2%;
+            left: 2%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .home img {
+            width: 35px;
+            height: 35px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 4rem;
+            color: #00ff00;
+            margin: 2rem 0;
+        }
+
+        /* Animation styles */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .stagger-in li {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+        .stagger-in.visible li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .stagger-in.visible li:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-in.visible li:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-in.visible li:nth-child(3) { transition-delay: 0.3s; }
+        .stagger-in.visible li:nth-child(4) { transition-delay: 0.4s; }
+        .stagger-in.visible li:nth-child(5) { transition-delay: 0.5s; }
+        .stagger-in.visible li:nth-child(6) { transition-delay: 0.6s; }
+
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .event-name h1 {
+                font-size: 4rem;
+            }
+            .event-name p {
+                font-size: 1.5rem;
+            }
+            .about-event p, .rules li, .requirements li {
+                font-size: 1.2rem;
+            }
+            h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .event-name h1 {
+                font-size: 3rem;
+            }
+            .event-name p {
+                font-size: 1.2rem;
+            }
+            .about-event p, .rules li, .requirements li {
+                font-size: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .head-details {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .event-name h1 {
+                font-size: 2rem;
+            }
+            .event-name p {
+                font-size: 1rem;
+            }
+            .about-event p, .rules li, .requirements li {
+                font-size: 0.9rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .head-details {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in, .slide-in-left, .slide-in-right, .scale-in, .stagger-in li {
+                transition: none;
+                transform: none;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="root">
+        <div class="home">
+            <a href="/index.html" aria-label="Scroll to top"><img src="/photos/house-chimney-solid.svg" alt="Home icon"></a>
+        </div>
+        <div id="top" class="container">
+            <div class="event-name fade-in">
+                <h1>THE METANET</h1>
+                <p>"Awaken to Marketing’s Next Reality – Take the Red Pill"
+                </p>
+            </div>
+        </div>
+
+        <main class="event-details">
+            <section class="slide-in-left">
+                <h1>Description</h1>
+                <div class="about-event">
+                    <p>Are you ready to break free from classic marketing and discover new dimensions of growth? 
+                        Welcome to The MetaNet, an elite event where you'll step into a Matrix-inspired world of 
+                        boundless horizons for your brand. This event invites you to rethink the norms and "choose 
+                        the red pill" to awaken your business potential in a competitive landscape. Discover the  
+                        groundbreaking insights that can shift your perspective and take your business to new Uncharted 
+                        Territory, Get Agent Smith’s Strategy Labs for hands-on experience with cutting-edge tools and
+                         techniques.
+                    </p>
+                    <br>
+                    <p>
+                        Unlock your marketing potential at The Metanet and transform the way you grow.
+                    </p>
+                </div>
+            </section>
+
+            <section class="slide-in-right">
+                <h1>About</h1>
+                <div class="about-event">
+                    <p>Metanet in simple term is a marketing event where innovation,inspiration and networking converge and 
+                        interactive experiences.Designed for forward thinking marketers, entrepreneurs and business leaders.
+                    </p>       
+                </div>
+            </section>
+            
+            <section class="scale-in">
+                <h1>Rules &amp; Regulations</h1>
+                <div class="rules">
+                    <ul class="stagger-in">
+                        <li><strong>Eligibility:</strong> Participants must be in teams of up to 2</li>
+                        <li><strong>Event Format:</strong> Multiple rounds of design challenges within set time limits.</li>
+                        <li><strong>Originality:</strong> Strictly no plagiarism, original work only.</li>
+                        <li><strong>Judging:</strong> Based on creativity, technical skill, and adherence to theme.</li>
+                        <li><strong>Prizes:</strong> Awarded to top participants; decisions by judges are final.</li>
+                        <li><strong>Conduct:</strong> Disruptive or disrespectful behavior leads to disqualification.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="slide-in-right">
+                <h1>Requirements</h1>
+                <div class="requirements">
+                    <ul class="stagger-in">
+                        <li>Number of rounds will be 4</li>
+                        <li>Each team should consist of 02 participants. One from each sem is compulsory .</li>
+                        <li>Requirement - 1 laptop and 1 pendrive.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="fade-in">
+                <h1>Faculty Co-ordinator</h1>
+                <div class="head-container">
+                    <div class="head">
+                        <div class="photo">
+                            <img src="/photos/shruti.jpg" alt="Prof. Shruti Kulkarni">
+                        </div>
+                        <div class="head-details">
+                            <h2>Prof. Shruti Kulkarni</h2>
+                            <p>Ph.No: 9900619694</p>      
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="scale-in">
+                <h1>Event Heads</h1>
+                <div class="head-container">
+                    <div class="head slide-in-left">
+                        <div class="photo">
+                            <img src="/photos/shri.jpeg" alt="Shrijeet Bedigere">
+                        </div>
+                        <div class="head-details">
+                            <h2>Shrijeet</h2>
+                            <p>Ph.No: 8088662949</p>      
+                        </div>
+                    </div>
+
+                    <div class="head slide-in-right">
+                        <div class="photo">
+                            <img src="/photos/snehal.jpg" alt="Snehal Nilajkar">
+                        </div>
+                        <div class="head-details">
+                            <h2>Snehal Nilajkar</h2>
+                            <p>Ph.No: 9620182776 </p>         
+                        </div>
+                    </div>
+                </div>   
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .stagger-in');
+            
+            function checkAnimation() {
+                animatedElements.forEach(function(element) {
+                    var bounding = element.getBoundingClientRect();
+                    if (bounding.top < window.innerHeight - 100) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', checkAnimation);
+            window.addEventListener('resize', checkAnimation);
+            checkAnimation();
+        });
+    </script>
+</body>
+</html>
